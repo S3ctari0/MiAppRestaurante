@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_degradado"
@@ -13,6 +12,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main"
     android:background="@drawable/fondo_degradado"
     android:orientation="vertical"
     android:gravity="center_horizontal"
@@ -20,10 +20,10 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="140dp"
+        android:layout_width="180dp"
         android:layout_height="281dp"
-        android:layout_gravity="center"
-        app:srcCompat="@drawable/preview" />
+        android:layout_gravity="top|center"
+        app:srcCompat="@drawable/logo"/>
 
     <TextView
         android:id="@+id/textView3"
@@ -32,7 +32,7 @@
         android:text="Food4U"
         android:textColor="#FDFDFD"
         android:textSize="24sp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="0dp"
         android:gravity="center" />
 
     <TextView
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:text="Usuario"
         android:textColor="#FDFDFD"
-        android:layout_marginTop="70dp" />
+        android:layout_marginTop="20dp" />
 
     <EditText
         android:id="@+id/UsuarioText"
@@ -83,5 +83,15 @@
         android:textColor="@color/white"
         android:gravity="center"/>
 
+    <Button
+        android:id="@+id/Button_Registro"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#4F6367"
+        android:text="Registrarse"
+        android:textColor="@color/white"
+        android:gravity="center"/>
 </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

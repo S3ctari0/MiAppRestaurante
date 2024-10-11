@@ -12,11 +12,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val button = findViewById<Button>(R.id.Button_Ingreso)
+        val buttonIngreso = findViewById<Button>(R.id.Button_Ingreso)
         val userInput = findViewById<EditText>(R.id.UsuarioText)
         val passwordInput = findViewById<EditText>(R.id.ContrasenaText)
+        val buttonRegistro = findViewById<Button>(R.id.Button_Registro)
 
-        button.setOnClickListener {
+        buttonRegistro.setOnClickListener {
+            val intent = Intent(this,MainActivityRegister::class.java)
+            startActivity(intent)
+        }
+
+        buttonIngreso.setOnClickListener {
             val userName = userInput.text.toString()
             val password = passwordInput.text.toString()
             Log.i("Prueba de credenciales","Username: $userName y Contrasena: $password")
