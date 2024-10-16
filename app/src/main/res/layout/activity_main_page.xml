@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivityPage">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/fondo_degradado"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:padding="20dp">
+    android:id="@+id/main"
+    android:background="@drawable/fondo_degradado"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="20dp"
+    tools:context=".ActivityMainPage">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,39 +39,265 @@
                 android:text="Salir"
                 android:textColor="@color/white"/>
         </LinearLayout>
-
         <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="3"
-            android:layout_marginTop="16dp">
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:rowCount="100"
+            android:columnCount="3">
 
-            <Button
-                android:id="@+id/column1_button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+            <androidx.cardview.widget.CardView
+                android:layout_width="1dp"
+                android:layout_height="1dp"
                 android:layout_columnWeight="1"
-                android:text="Columna 1"
-                android:backgroundTint="#A0A4A8"
-                android:textColor="@color/white"/>
+                android:layout_margin="8dp"
+                android:layout_rowWeight="1"
+                app:cardElevation="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-            <Button
-                android:id="@+id/column2_button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                    <ImageButton
+                        android:id="@+id/ButtonPlace"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_launcher_food" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="10sp"
+                        android:textColor="#000"
+                        android:layout_marginTop="2dp"
+                        android:text="Primero"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="1dp"
+                android:layout_height="1dp"
                 android:layout_columnWeight="1"
-                android:text="Columna 2"
-                android:backgroundTint="#A0A4A8"
-                android:textColor="@color/white"/>
+                android:layout_margin="8dp"
+                android:layout_rowWeight="1"
+                app:cardElevation="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-            <Button
-                android:id="@+id/column3_button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                    <ImageButton
+                        android:id="@+id/ButtonPlace1"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_launcher_food" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="10sp"
+                        android:textColor="#000"
+                        android:layout_marginTop="2dp"
+                        android:text="Primero"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="1dp"
+                android:layout_height="1dp"
                 android:layout_columnWeight="1"
-                android:text="Columna 3"
-                android:backgroundTint="#A0A4A8"
-                android:textColor="@color/white"/>
+                android:layout_margin="8dp"
+                android:layout_rowWeight="1"
+                app:cardElevation="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ButtonPlace2"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_launcher_food" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="10sp"
+                        android:textColor="#000"
+                        android:layout_marginTop="2dp"
+                        android:text="Primero"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:layout_rowWeight="1"
+                app:cardElevation="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ButtonPlace3"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_launcher_food" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="10sp"
+                        android:textColor="#000"
+                        android:layout_marginTop="2dp"
+                        android:text="Primero"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:layout_rowWeight="1"
+                app:cardElevation="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ButtonPlace4"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_launcher_food" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="10sp"
+                        android:textColor="#000"
+                        android:layout_marginTop="2dp"
+                        android:text="Primero"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:layout_rowWeight="1"
+                app:cardElevation="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ButtonPlace5"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_launcher_food" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="10sp"
+                        android:textColor="#000"
+                        android:layout_marginTop="2dp"
+                        android:text="Primero"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:layout_rowWeight="1"
+                app:cardElevation="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ButtonPlace6"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_launcher_food" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="10sp"
+                        android:textColor="#000"
+                        android:layout_marginTop="2dp"
+                        android:text="Primero"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:layout_rowWeight="1"
+                app:cardElevation="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ButtonPlace7"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_launcher_food" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="10sp"
+                        android:textColor="#000"
+                        android:layout_marginTop="2dp"
+                        android:text="Primero"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:layout_rowWeight="1"
+                app:cardElevation="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/ButtonPlace8"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_launcher_food" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="10sp"
+                        android:textColor="#000"
+                        android:layout_marginTop="2dp"
+                        android:text="Primero"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
         </GridLayout>
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

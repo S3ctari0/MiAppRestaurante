@@ -1,97 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_degradado"
-    tools:context=".MainActivity">
-
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    tools:context=".ActivityLogIn"
     android:id="@+id/main"
     android:background="@drawable/fondo_degradado"
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:padding="20dp">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="180dp"
-        android:layout_height="281dp"
-        android:layout_gravity="top|center"
-        app:srcCompat="@drawable/logo"/>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="180dp"
+            android:layout_height="281dp"
+            android:layout_gravity="top|center"
+            app:srcCompat="@drawable/logo"/>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Food4U"
-        android:textColor="#FDFDFD"
-        android:textSize="24sp"
-        android:layout_marginTop="0dp"
-        android:gravity="center" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Food4U"
+            android:textColor="#FDFDFD"
+            android:textSize="24sp"
+            android:layout_marginTop="0dp"
+            android:gravity="center" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Usuario"
-        android:textColor="#FDFDFD"
-        android:layout_marginTop="20dp" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Usuario"
+            android:textColor="#FDFDFD"
+            android:layout_marginTop="20dp" />
 
-    <EditText
-        android:id="@+id/UsuarioText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_corner"
-        android:ems="17"
-        android:padding="15dp"
-        android:textColor="#FFFCFC"
-        android:inputType="text" />
+        <EditText
+            android:id="@+id/UsuarioText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_corner"
+            android:ems="17"
+            android:padding="15dp"
+            android:textColor="#FFFCFC"
+            android:inputType="text" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contraseña"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="25dp"/>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contraseña"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="25dp"/>
 
-    <EditText
-        android:id="@+id/ContrasenaText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/rounded_corner"
-        android:ems="17"
-        android:padding="15dp"
-        android:textColor="#FFFFFF"
-        android:inputType="textPassword"/>
+        <EditText
+            android:id="@+id/ContrasenaText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/rounded_corner"
+            android:ems="17"
+            android:padding="15dp"
+            android:textColor="#FFFFFF"
+            android:inputType="textPassword"/>
 
-    <Button
-        android:id="@+id/Button_Ingreso"
-        android:layout_width="144dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="#4F6367"
-        android:text="Ingresar"
-        android:textColor="@color/white"
-        android:gravity="center"/>
+        <Button
+            android:id="@+id/Button_Ingreso"
+            android:layout_width="144dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#4F6367"
+            android:text="Ingresar"
+            android:textColor="@color/white"
+            android:gravity="center"/>
 
-    <Button
-        android:id="@+id/Button_Registro"
-        android:layout_width="144dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#4F6367"
-        android:text="Registrarse"
-        android:textColor="@color/white"
-        android:gravity="center"/>
+        <Button
+            android:id="@+id/Button_Registro"
+            android:layout_width="144dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#4F6367"
+            android:text="Registrarse"
+            android:textColor="@color/white"
+            android:gravity="center"/>
 </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>

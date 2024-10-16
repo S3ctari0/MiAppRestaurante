@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -12,7 +13,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 
-class MainActivity : AppCompatActivity() {
+class ActivityLogIn : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         val buttonRegistro = findViewById<Button>(R.id.Button_Registro)
 
         buttonRegistro.setOnClickListener {
-            val intent = Intent(this, MainActivityRegister::class.java)
+            val intent = Intent(this, ActivityRegister::class.java)
             startActivity(intent)
         }
 
@@ -39,12 +40,14 @@ class MainActivity : AppCompatActivity() {
                     Request.Method.POST, url,
                     Response.Listener<String> { response ->
                         if (response.contains("\"success\":true")) {
-                            val intent = Intent(this, MainActivityPage::class.java)
+                            val intent = Intent(this, ActivityMainPage::class.java)
+                            Toast.makeText(this, "Inicio de sesión completado.", Toast.LENGTH_SHORT).show()
                             intent.putExtra("USER_NAME", userName)
                             startActivity(intent)
                             finish()
                         } else {
                             Log.e("MainActivity", "Error en el inicio de sesión: $response")
+                            Toast.makeText(this, "Usuario o contraseña incorrect@.", Toast.LENGTH_SHORT).show()
                         }
                     },
                     Response.ErrorListener { error ->
@@ -61,6 +64,7 @@ class MainActivity : AppCompatActivity() {
                 requestQueue.add(stringRequest)
             } else {
                 Log.e("MainActivity", "Por favor, completa todos los campos.")
+                Toast.makeText(this, "LLena todos los campos solicitados.", Toast.LENGTH_SHORT).show()
             }
         }
     }

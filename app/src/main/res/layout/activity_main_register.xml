@@ -74,7 +74,7 @@
         android:ems="17"
         android:padding="15dp"
         android:textColor="#FFFFFF"
-        android:inputType="textPassword"/>
+        android:inputType="text"/>
 
     <Button
         android:id="@+id/Button_Registro1"
@@ -83,6 +83,16 @@
         android:layout_marginTop="30dp"
         android:backgroundTint="#4F6367"
         android:text="Ingresar"
+        android:textColor="@color/white"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/ButtonLog1n"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#4F6367"
+        android:text="Iniciar Sesion"
         android:textColor="@color/white"
         android:gravity="center"/>
 
