@@ -26,7 +26,7 @@
             android:layout_weight="1"
             android:gravity="start"
             android:layout_marginEnd="16dp"
-            android:text="Titulo del Lugar"
+            android:text="Titulo del restaurante"
             android:textColor="#FFFFFF"
             android:textSize="24sp" />
         <ImageView
@@ -36,7 +36,6 @@
             android:layout_gravity="top|center"
             android:src="@drawable/restaurante" />
     </LinearLayout>
-
     <TextView
         android:id="@+id/textDescrPlace"
         android:layout_width="match_parent"
@@ -45,16 +44,48 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:text="Descripción del lugar"
-        android:textColor="#FFFFFF"/>
+        android:background="@drawable/background_rounded"
+        android:textColor="#000000"
+        android:paddingLeft="10dp"
+        android:textStyle="italic|bold"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"
+        android:background="@drawable/background_rounded"
+        android:text="Esta es la descripcion del lugar incluyendo muchas veces opciones del menu del dia en el restaurante que se haya seleccionado en la pantalla anterior"
+        android:paddingLeft="10dp"
+        android:textStyle="italic"/>
+    <Button
+        android:id="@+id/ButtonAddComments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Añadir Comentario"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="start"
+        android:textColor="@color/white"
+        android:backgroundTint="#3D4D50"/>
+
 
     <TextView
         android:id="@+id/textCommentsPlace"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:background="@drawable/background_rounded"
         android:text="Comentarios del lugar"
-        android:textColor="#FFFFFF"/>
-
+        android:textColor="#000000"
+        android:paddingLeft="10dp"
+        android:textStyle="italic|bold"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_rounded"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:text="Usuario:\nEsto es un ejemplo de como se veran los comentarios dentro de las actividades de cada restaurante"/>
 </LinearLayout>
