@@ -8,9 +8,6 @@
                 android:endColor="@color/Col1"
                 android:type="linear"
                 android:angle="120"/>
-
         </shape>
-
     </item>
-
 </selector>

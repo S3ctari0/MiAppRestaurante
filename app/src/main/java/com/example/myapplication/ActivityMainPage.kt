@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
@@ -25,10 +26,21 @@ class ActivityMainPage : AppCompatActivity() {
         buttonExit.setOnClickListener {
             finish()
         }
-
-        buttonPlace.setOnClickListener {
-            val intent = Intent(this, ActivityPlace::class.java)
-            startActivity(intent)
+        fun  onClickMenuBoton(v: View) {
+            when ((v.id)) {
+                R.id.ButtonPlace1->{
+                    val intent = Intent(this, ActivityPlace::class.java)
+                    startActivity(intent)
+                }
+                R.id.ButtonPlace2->{
+                    val intent = Intent(this, ActivityPlace::class.java)
+                    startActivity(intent)
+                }
+                R.id.ButtonPlace3->{
+                    val intent = Intent(this, ActivityPlace::class.java)
+                    startActivity(intent)
+                }
+            }
         }
     }
 }

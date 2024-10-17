@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.ir.backend.js.compile
+import kotlin.script.experimental.jvm.util.classpathFromClass
 
 plugins {
     alias(libs.plugins.android.application)
