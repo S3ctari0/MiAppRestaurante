@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -19,8 +20,16 @@ class ActivityMainPage : AppCompatActivity() {
         welcomeTextView.text = "Bienvenido, $userName!"
 
         val buttonExit = findViewById<Button>(R.id.button_exit)
+        val buttonPlace = findViewById<ImageButton>(R.id.ButtonPlace)
+
         buttonExit.setOnClickListener {
-            finishAffinity()
+            finish()
+        }
+
+        buttonPlace.setOnClickListener {
+            val intent = Intent(this, ActivityPlace::class.java)
+            startActivity(intent)
         }
     }
 }
+    
