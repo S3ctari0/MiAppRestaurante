@@ -57,16 +57,17 @@
         android:padding="15dp"
         android:textColor="#FFFFFF"
         android:inputType="textPassword"/>
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Usuario"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginTop="25dp"
+        android:text="E-mail"
+        android:textColor="#FFFFFF" />
 
     <EditText
-        android:id="@+id/UserName"
+        android:id="@+id/EmailR"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"

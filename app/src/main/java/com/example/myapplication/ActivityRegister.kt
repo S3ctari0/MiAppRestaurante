@@ -6,23 +6,23 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.android.volley.Request
-import com.android.volley.RequestQueue
-import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
 
 class ActivityRegister : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_register)
+        FirebaseApp.initializeApp(this)
 
         val buttonRegistro = findViewById<Button>(R.id.Button_Registro1)
         val name = findViewById<EditText>(R.id.UsuarioR)
         val password = findViewById<EditText>(R.id.ContrasenaR)
-        val user = findViewById<EditText>(R.id.UserName)
+        val user = findViewById<EditText>(R.id.EmailR)
         val buttonLogIn = findViewById<Button>(R.id.ButtonLog1n)
 
         buttonLogIn.setOnClickListener {
@@ -30,48 +30,37 @@ class ActivityRegister : AppCompatActivity() {
         }
 
         buttonRegistro.setOnClickListener {
-            val userName = user.text.toString()
+            val email = user.text.toString()
             val pass = password.text.toString()
             val fullName = name.text.toString()
 
-            if (userName.isNotEmpty() && pass.isNotEmpty() && fullName.isNotEmpty()) {
-                val url = "http://192.168.0.6/Register.php"
-                val postData = mapOf(
-                    "name" to fullName,
-                    "username" to userName,
-                    "password" to pass
-                )
-
-                val requestQueue: RequestQueue = Volley.newRequestQueue(this)
-                val stringRequest = object : StringRequest(
-                    Request.Method.POST, url,
-                    Response.Listener<String> { response ->
-                        if (response.contains("\"success\":true")) {
+            if (email.isNotEmpty() && pass.isNotEmpty() && fullName.isNotEmpty()) {
+                FirebaseAuth.getInstance()
+                    .createUserWithEmailAndPassword(user.text.toString(), password.text.toString())
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
                             val intent = Intent(this, ActivityMainPage::class.java)
+                            intent.putExtra("USER_NAME", fullName)
                             Toast.makeText(this, "Usuario creado!", Toast.LENGTH_SHORT).show()
-                            intent.putExtra("USER_NAME", userName)
                             startActivity(intent)
-                            finish()
                         } else {
-                            Log.e("MainActivityRegister", "Error en el registro: $response")
-                            if (response.contains("Usuario ya existe")) {
-                                Toast.makeText(this, "El usuario ya existe", Toast.LENGTH_SHORT).show()
-                            }
+                            showAlert()
                         }
-                    },
-                    Response.ErrorListener { error ->
-                        Log.e("MainActivityRegister", "Volley error: ${error.message}")
                     }
-                ) {
-                    override fun getParams(): Map<String, String> {
-                        return postData
-                    }
-                }
-                requestQueue.add(stringRequest)
             } else {
-                Toast.makeText(this, "LLena todos los campos solicitados.", Toast.LENGTH_SHORT).show()
-                Log.e("MainActivityRegister", "Por favor, completa todos los campos.")
+                Toast.makeText(this, "Por favor completa todos los campos", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
+    }
+
+
+    private fun showAlert() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Error")
+        builder.setMessage("Se ha producido un error autenticando al usuario.")
+        builder.setPositiveButton("Aceptar", null)
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
     }
 }

@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">Food4U</string>
     <string name="primera_opcion">Primera opcion</string>
+    <string name="salir">Salir</string>
+    <string name="fast4food">Fast4Food</string>
+    <string name="regresa_al_login">Regresa al login</string>
+    <string name="a_adir_lugar">Añadir lugar</string>
+    <string name="como_se_llama_tu_restaurante">Como se llama tu restaurante?</string>
+    <string name="nombre_del_restaurante">Nombre del restaurante</string>
+    <string name="a_ade_una_descripcion_a_tu_restaunrante">Añade una descripcion a tu restaunrante</string>
+    <string name="descripcion">Descripcion</string>
+    <string name="a_ade_una_imagen_de_tu_restaurante">Añade una imagen de tu restaurante.</string>
+    <string name="seleccionar_imagen">Seleccionar Imagen</string>
+    <string name="guardar_restaurante">Guardar restaurante</string>
+    <string name="nuevo_item">Nuevo Item</string>
 </resources>
