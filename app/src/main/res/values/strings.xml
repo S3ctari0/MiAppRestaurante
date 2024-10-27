@@ -13,4 +13,6 @@
     <string name="seleccionar_imagen">Seleccionar Imagen</string>
     <string name="guardar_restaurante">Guardar restaurante</string>
     <string name="nuevo_item">Nuevo Item</string>
+    <string name="restaurantepreview">RestaurantePreview</string>
+    <string name="opcionrestauranteagregado">OpcionRestauranteAgregado</string>
 </resources>

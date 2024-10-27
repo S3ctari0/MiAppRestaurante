@@ -54,31 +54,38 @@
                 android:layout_height="wrap_content"
                 android:text="@string/como_se_llama_tu_restaurante"
                 android:textSize="20sp"
+                android:layout_marginTop="20dp"
                 android:textColor="@color/white"/>
             <EditText
                 android:id="@+id/editTextName"
-                android:layout_width="match_parent"
+                android:layout_width="350dp"
+                android:layout_gravity="center"
                 android:layout_height="wrap_content"
+                android:autofillHints="no"
+                android:inputType="text"
                 android:hint="@string/nombre_del_restaurante"
                 android:textColor="@color/white"
-                android:padding="8dp"
+                android:padding="12dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/rounded_corner"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/a_ade_una_descripcion_a_tu_restaunrante"
                 android:textSize="20sp"
                 android:textColor="@color/white"/>
             <EditText
                 android:id="@+id/editTextDescription"
-                android:layout_width="match_parent"
+                android:layout_width="350dp"
+                android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:hint="@string/descripcion"
+                android:importantForAutofill="no"
+                android:inputType="text"
                 android:textColor="@color/white"
-                android:padding="8dp"
+                android:padding="12dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/rounded_corner"/>
 
@@ -91,7 +98,8 @@
                 android:textColor="@color/white"/>
             <Button
                 android:id="@+id/button_select_image"
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
+                android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#3C4B4E"
                 android:layout_marginTop="15dp"
@@ -102,7 +110,8 @@
                 android:layout_width="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_gravity="center"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/restaurantepreview" />
 
             <Button
                 android:id="@+id/buttonSave"
