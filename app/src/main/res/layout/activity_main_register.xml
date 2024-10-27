@@ -19,6 +19,14 @@
             android:textSize="30dp"
             android:layout_marginTop="60dp"
             android:gravity="center" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registrarse"
+        android:layout_marginTop="55dp"
+        android:textColor="#FDFDFD"
+        android:gravity="center"
+        android:textSize="15dp"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -26,7 +34,7 @@
         android:layout_height="wrap_content"
         android:text="Nombre"
         android:textColor="#FDFDFD"
-        android:layout_marginTop="120dp" />
+        android:layout_marginTop="60dp" />
 
     <EditText
         android:id="@+id/UsuarioR"
