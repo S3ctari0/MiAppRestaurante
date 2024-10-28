@@ -1,91 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityPlace"
-    android:id="@+id/main"
-    android:background="@drawable/fondo_degradado"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:padding="20dp">
+    android:background="@drawable/fondo_degradado">
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="16dp">
-        <TextView
-            android:id="@+id/textTittlePlace"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="start"
-            android:layout_marginEnd="16dp"
-            android:text="Titulo del restaurante"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="#3C4B4E"
+        android:titleTextColor="@android:color/white"
+        android:elevation="4dp">
+
         <ImageView
-            android:id="@+id/imagePlace"
-            android:layout_width="180dp"
-            android:layout_height="130dp"
-            android:layout_gravity="top|center"
-            android:src="@drawable/restaurante" />
-    </LinearLayout>
-    <TextView
-        android:id="@+id/textDescrPlace"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Descripción del lugar"
-        android:background="@drawable/background_rounded"
-        android:textColor="#000000"
-        android:paddingLeft="10dp"
-        android:textStyle="italic|bold"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/black"
-        android:background="@drawable/background_rounded"
-        android:text="Esta es la descripcion del lugar incluyendo muchas veces opciones del menu del dia en el restaurante que se haya seleccionado en la pantalla anterior"
-        android:paddingLeft="10dp"
-        android:textStyle="italic"/>
-    <Button
-        android:id="@+id/ButtonAddComments"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Añadir Comentario"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="start"
-        android:textColor="@color/white"
-        android:backgroundTint="#3D4D50"/>
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="30dp"
+            android:contentDescription="@string/regresa_al_login"
+            android:src="@drawable/ic_arrow_back_white"/>
 
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/fast4food"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            android:textStyle="bold|italic"/>
+    </androidx.appcompat.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/textCommentsPlace"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/background_rounded"
-        android:text="Comentarios del lugar"
-        android:textColor="#000000"
-        android:paddingLeft="10dp"
-        android:textStyle="italic|bold"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background_rounded"
-        android:textColor="@color/black"
-        android:layout_marginTop="5dp"
-        android:paddingLeft="10dp"
-        android:text="Usuario:\nEsto es un ejemplo de como se veran los comentarios dentro de las actividades de cada restaurante"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/textTittlePlace"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:text=""
+                    android:layout_marginStart="16dp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
+                    android:textStyle="bold|italic"/>
+
+                <ImageView
+                    android:id="@+id/imagePlace"
+                    android:layout_width="180dp"
+                    android:layout_height="130dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textDescrPlace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/background_rounded"
+                android:text="@string/descplace"
+                android:textColor="#000000"
+                android:padding="10dp"
+                android:textStyle="italic|bold"/>
+
+            <TextView
+                android:id="@+id/placeDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_rounded"
+                android:text=""
+                android:textColor="@color/black"
+                android:padding="10dp"
+                android:textStyle="italic"/>
+
+            <Button
+                android:id="@+id/ButtonAddComments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/anadirrestaurante"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#3D4D50"/>
+
+            <TextView
+                android:id="@+id/textCommentsPlace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/background_rounded"
+                android:text="@string/comentarioplace"
+                android:textColor="#000000"
+                android:padding="10dp"
+                android:textStyle="italic|bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_rounded"
+                android:text="Usuario:\nEsto es un ejemplo de como se veran los comentarios dentro de las actividades de cada restaurante"
+                android:textColor="@color/black"
+                android:padding="10dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

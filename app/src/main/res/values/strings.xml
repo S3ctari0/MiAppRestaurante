@@ -15,4 +15,7 @@
     <string name="nuevo_item">Nuevo Item</string>
     <string name="restaurantepreview">RestaurantePreview</string>
     <string name="opcionrestauranteagregado">OpcionRestauranteAgregado</string>
+    <string name="anadirrestaurante">Añadir Comentario</string>
+    <string name="comentarioplace">Comentarios del lugar</string>
+    <string name="descplace">Descripción del lugar</string>
 </resources>
