@@ -26,14 +26,14 @@ class RestauranteAdapter(private val restaurantes: List<Restaurante>, private va
         val restaurante = restaurantes[position]
         holder.textView.text = restaurante.nombre
 
-        // Cargar la imagen usando Glide o Picasso
+        // Cargar la imagen usando Glide
         Glide.with(holder.itemView.context)
             .load(restaurante.imagenUrl)
             .into(holder.imageButton)
 
         holder.itemView.setOnClickListener {
             Log.d("RestauranteAdapter", "Seleccionado: ${restaurante.nombre}")
-            onClick(restaurante) // Llama a la función al hacer clic
+            onClick(restaurante)
         }
     }
 

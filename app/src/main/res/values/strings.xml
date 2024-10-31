@@ -18,4 +18,5 @@
     <string name="anadirrestaurante">Añadir Comentario</string>
     <string name="comentarioplace">Comentarios del lugar</string>
     <string name="descplace">Descripción del lugar</string>
+    <string name="calificacion">Calificacion:</string>
 </resources>

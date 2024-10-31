@@ -23,7 +23,6 @@ class ActivityMainPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_page)
 
-        // Handle back button click (assuming logic exists in ActivityLogIn)
         val backButton = findViewById<ImageView>(R.id.back_button)
         backButton.setOnClickListener {
             val intent = Intent(this, ActivityLogIn::class.java)
@@ -31,19 +30,15 @@ class ActivityMainPage : AppCompatActivity() {
             finish()
         }
 
-        // Welcome message
         val userName = intent.getStringExtra("USER_NAME")
         val welcomeTextView = findViewById<TextView>(R.id.textView5)
         welcomeTextView.text = "Bienvenido\n$userName !"
 
-        // Configure RecyclerView
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Load restaurants from Firebase
         obtenerRestaurantes()
 
-        // Handle add card button click (assuming logic exists in ActivityEditPlace)
         val addCardButton = findViewById<Button>(R.id.buttonAddPlace)
         addCardButton.setOnClickListener {
             val intent = Intent(this, ActivityEditPlace::class.java)
@@ -59,12 +54,10 @@ class ActivityMainPage : AppCompatActivity() {
                     val nombre = document.getString("nombre") ?: ""
                     val descripcion = document.getString("descripcion") ?: ""
                     val imagenUrl = document.getString("imagenUrl") ?: ""
-                    Restaurante(nombre, descripcion, imagenUrl) // Ensure Restaurante class exists
+                    Restaurante(nombre, descripcion, imagenUrl)
                 }
 
-                // Create and set adapter to RecyclerView with click handling
                 adapter = RestauranteAdapter(restaurantes) { restaurante ->
-                    // Now redirect to ActivityPlace when a restaurant is clicked
                     val intent = Intent(this, ActivityPlace::class.java)
                     intent.putExtra("restaurante_nombre", restaurante.nombre)
                     intent.putExtra("restaurante_descripcion", restaurante.descripcion)
