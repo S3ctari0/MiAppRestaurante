@@ -48,29 +48,27 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="10dp">
 
                 <TextView
                     android:id="@+id/textTittlePlace"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_weight="1"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="center"
                     android:text=""
-                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="15dp"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textSize="30sp"
                     android:textStyle="bold|italic"/>
 
                 <ImageView
                     android:id="@+id/imagePlace"
-                    android:layout_width="200dp"
-                    android:layout_height="160dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="8dp"/>
+                    android:layout_width="400dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center" />
             </LinearLayout>
 
             <TextView
@@ -82,6 +80,7 @@
                 android:text="@string/descplace"
                 android:textColor="#000000"
                 android:padding="10dp"
+                android:textSize="18sp"
                 android:textStyle="italic|bold"/>
 
             <TextView
@@ -89,36 +88,41 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/background_rounded"
+                android:background="@drawable/rounded_corner"
                 android:text=""
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:padding="10dp"
+                android:textSize="18sp"
                 android:textStyle="italic"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/calificacion"
                 android:layout_marginTop="15dp"
-                android:textSize="15sp"
                 android:padding="10dp"
                 android:textStyle="italic|bold"
+                android:textSize="18sp"
                 android:textColor="#000000"
                 android:background="@drawable/background_rounded"/>
-            <RatingBar
-                android:background="@drawable/rounded_corner"
-                android:id="@+id/estrellasCalificacion"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="10dp"
-                android:numStars="5"
-                android:layout_height="wrap_content"
-                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RatingBar
+                    android:id="@+id/estrellasCalificacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
 
             <Button
-                android:id="@+id/ButtonAddComments"
+                android:id="@+id/buttonCalificar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="@string/anadirrestaurante"
+                android:text="@string/guardar_valoraci_n"
                 android:textColor="@android:color/white"
                 android:backgroundTint="#3D4D50"/>
 
@@ -130,6 +134,7 @@
                 android:background="@drawable/background_rounded"
                 android:text="@string/comentarioplace"
                 android:textColor="#000000"
+                android:textSize="18sp"
                 android:padding="10dp"
                 android:textStyle="italic|bold"/>
 
@@ -137,12 +142,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/background_rounded"
-                android:text="Esto es un ejemplo de como se veran los comentarios dentro de las actividades de cada restaurante"
-                android:textColor="@color/black"
+                android:background="@drawable/rounded_corner"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="18sp"
                 android:padding="10dp"/>
         </LinearLayout>
     </ScrollView>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

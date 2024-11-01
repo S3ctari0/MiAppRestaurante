@@ -1,6 +1,5 @@
 package com.example.myapplication
 
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -11,13 +10,12 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.google.firebase.FirebaseApp
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import android.Manifest
+
 class ActivityEditPlace : AppCompatActivity() {
     private lateinit var db: FirebaseFirestore
     private lateinit var storageRef: StorageReference
@@ -41,18 +39,15 @@ class ActivityEditPlace : AppCompatActivity() {
             }
         }
 
-        val buttonSelectImage = findViewById<Button>(R.id.button_select_image)
-        buttonSelectImage.setOnClickListener {
+        findViewById<Button>(R.id.button_select_image).setOnClickListener {
             getContent.launch("image/*")
         }
 
-        val backButton = findViewById<ImageView>(R.id.back_button)
-        backButton.setOnClickListener {
+        findViewById<ImageView>(R.id.back_button).setOnClickListener {
             finish()
         }
 
-        val saveButton = findViewById<Button>(R.id.buttonSave)
-        saveButton.setOnClickListener {
+        findViewById<Button>(R.id.buttonSave).setOnClickListener {
             val nombre = findViewById<EditText>(R.id.editTextName).text.toString()
             val descripcion = findViewById<EditText>(R.id.editTextDescription).text.toString()
 
@@ -66,11 +61,6 @@ class ActivityEditPlace : AppCompatActivity() {
     }
 
     private fun subirImagen(uri: Uri) {
-        if (uri == null) {
-            Toast.makeText(this, "Por favor, selecciona una imagen.", Toast.LENGTH_SHORT).show()
-            return
-        }
-
         val imageName = "${System.currentTimeMillis()}_${uri.lastPathSegment}"
         val imageRef = storageRef.child("images/$imageName")
 
@@ -78,14 +68,10 @@ class ActivityEditPlace : AppCompatActivity() {
 
         // Verifica el tipo de la imagen
         val mimeType = contentResolver.getType(uri)
-        Log.d("ActivityEditPlace", "MIME type de la imagen: $mimeType")
-
         if (mimeType != "image/jpeg" && mimeType != "image/png") {
             Toast.makeText(this, "Por favor, selecciona una imagen en formato JPG o PNG.", Toast.LENGTH_SHORT).show()
             return
         }
-
-        Log.d("ActivityEditPlace", "Subiendo imagen desde URI: $uri con nombre: $imageName")
 
         imageRef.putFile(uri)
             .addOnSuccessListener { taskSnapshot ->
@@ -104,10 +90,10 @@ class ActivityEditPlace : AppCompatActivity() {
     private fun guardarRestauranteEnFirestore(restaurante: Restaurante) {
         val docRef = db.collection("restaurantes").document() // Crea un nuevo documento
 
-        docRef.set(restaurante)
+        docRef.set(restaurante.copy(id = docRef.id))
             .addOnSuccessListener {
                 Toast.makeText(this, "Restaurante agregado con éxito", Toast.LENGTH_SHORT).show()
-                finish() // Cierra la actividad o realiza otra acción según tu flujo
+                finish()
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Error al agregar el restaurante: ${e.message}", Toast.LENGTH_SHORT).show()
@@ -117,12 +103,21 @@ class ActivityEditPlace : AppCompatActivity() {
     private fun obtenerDatosRestaurante(): Restaurante {
         val nombre = findViewById<EditText>(R.id.editTextName).text.toString()
         val descripcion = findViewById<EditText>(R.id.editTextDescription).text.toString()
-        return Restaurante(nombre, descripcion, "")
+        return Restaurante(id = "", nombre, descripcion, "", emptyList())
     }
 }
 
 data class Restaurante(
+    val id: String = "",
     val nombre: String,
     val descripcion: String,
-    val imagenUrl: String
-)
+    val imagenUrl: String,
+    val calificaciones: List<Float> = emptyList() // Cambiado a List<Float>
+) {
+    val calificacionPromedio: Float
+        get() = if (calificaciones.isNotEmpty()) {
+            calificaciones.average().toFloat()
+        } else {
+            0f
+        }
+}

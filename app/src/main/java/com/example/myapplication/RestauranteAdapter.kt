@@ -15,6 +15,7 @@ class RestauranteAdapter(private val restaurantes: List<Restaurante>, private va
     class RestauranteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val imageButton: ImageButton = view.findViewById(R.id.card_button)
         val textView: TextView = view.findViewById(R.id.card_text_view)
+        val ratingTextView: TextView = view.findViewById(R.id.card_rating_text_view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestauranteViewHolder {
@@ -25,6 +26,7 @@ class RestauranteAdapter(private val restaurantes: List<Restaurante>, private va
     override fun onBindViewHolder(holder: RestauranteViewHolder, position: Int) {
         val restaurante = restaurantes[position]
         holder.textView.text = restaurante.nombre
+        holder.ratingTextView.text = "${restaurante.calificacionPromedio}"
 
         // Cargar la imagen usando Glide
         Glide.with(holder.itemView.context)

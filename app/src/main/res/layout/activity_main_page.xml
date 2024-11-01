@@ -73,14 +73,23 @@
                     android:padding="14dp">
 
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/textBienvenida"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="start"
                         android:text=""
                         android:textColor="#FFFFFF"
-                        android:textSize="24sp" />
+                        android:textSize="20sp" />
+
+                    <Button
+                        android:id="@+id/buttonRefresh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/refrescar"
+                        android:textColor="@color/white"
+                        android:backgroundTint="#3C4B4E"/>
+
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView

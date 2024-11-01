@@ -31,16 +31,16 @@ class ActivityLogIn : AppCompatActivity() {
         }
 
         buttonIngreso.setOnClickListener {
-            val userName = userInput.text.toString().trim()
+            val userEmail = userInput.text.toString().trim() // Este es el email
             val pass = passwordInput.text.toString().trim()
 
-            if (userName.isNotEmpty() && pass.isNotEmpty()) {
-                auth.signInWithEmailAndPassword(userName, pass)
+            if (userEmail.isNotEmpty() && pass.isNotEmpty()) {
+                auth.signInWithEmailAndPassword(userEmail, pass)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            val user = auth.currentUser
-                            val intent = Intent(this, ActivityMainPage::class.java)
-                            intent.putExtra("USER_NAME", user?.email)
+                            val intent = Intent(this, ActivityMainPage::class.java).apply {
+                                putExtra("USER_NAME", userEmail)
+                            }
                             Toast.makeText(this, "Inicio de sesión exitoso!", Toast.LENGTH_SHORT).show()
                             startActivity(intent)
                             finish()

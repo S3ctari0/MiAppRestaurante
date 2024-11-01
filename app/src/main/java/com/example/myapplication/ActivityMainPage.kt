@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -16,33 +15,36 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class ActivityMainPage : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: RestauranteAdapter // Adapter for restaurants
+    private lateinit var adapter: RestauranteAdapter
+    private lateinit var db: FirebaseFirestore
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_page)
 
-        val backButton = findViewById<ImageView>(R.id.back_button)
-        backButton.setOnClickListener {
+        db = FirebaseFirestore.getInstance()
+
+        findViewById<ImageView>(R.id.back_button).setOnClickListener {
             val intent = Intent(this, ActivityLogIn::class.java)
             startActivity(intent)
             finish()
         }
 
-        val userName = intent.getStringExtra("USER_NAME")
-        val welcomeTextView = findViewById<TextView>(R.id.textView5)
-        welcomeTextView.text = "Bienvenido\n$userName !"
+        val userName = intent.getStringExtra("USER_NAME") ?: "Usuario"
+        findViewById<TextView>(R.id.textBienvenida).text = "Bienvenido\n$userName !"
 
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         obtenerRestaurantes()
 
-        val addCardButton = findViewById<Button>(R.id.buttonAddPlace)
-        addCardButton.setOnClickListener {
-            val intent = Intent(this, ActivityEditPlace::class.java)
-            startActivity(intent)
+        findViewById<Button>(R.id.buttonAddPlace).setOnClickListener {
+            startActivity(Intent(this, ActivityEditPlace::class.java))
+        }
+
+        findViewById<Button>(R.id.buttonRefresh).setOnClickListener {
+            recreate()
         }
     }
 
@@ -54,20 +56,25 @@ class ActivityMainPage : AppCompatActivity() {
                     val nombre = document.getString("nombre") ?: ""
                     val descripcion = document.getString("descripcion") ?: ""
                     val imagenUrl = document.getString("imagenUrl") ?: ""
-                    Restaurante(nombre, descripcion, imagenUrl)
+                    val calificaciones = document.get("calificaciones") as? List<Float> ?: emptyList()
+
+                    Restaurante(document.id, nombre, descripcion, imagenUrl, calificaciones)
                 }
 
                 adapter = RestauranteAdapter(restaurantes) { restaurante ->
-                    val intent = Intent(this, ActivityPlace::class.java)
-                    intent.putExtra("restaurante_nombre", restaurante.nombre)
-                    intent.putExtra("restaurante_descripcion", restaurante.descripcion)
-                    intent.putExtra("restaurante_imagen_url", restaurante.imagenUrl)
+                    val intent = Intent(this, ActivityPlace::class.java).apply {
+                        putExtra("restaurante_id", restaurante.id)
+                        putExtra("restaurante_nombre", restaurante.nombre)
+                        putExtra("restaurante_descripcion", restaurante.descripcion)
+                        putExtra("restaurante_imagen_url", restaurante.imagenUrl)
+                    }
                     startActivity(intent)
                 }
                 recyclerView.adapter = adapter
             }
             .addOnFailureListener { e ->
-                Log.e("ActivityMainPage", "Error al obtener los restaurantes: ${e.message}")
+                Log.e("ActivityMainPage", "Error al obtener los restaurantes: ${e.message}", e)
+                Toast.makeText(this, "Error al cargar los restaurantes. Intenta nuevamente.", Toast.LENGTH_SHORT).show()
             }
     }
 }
