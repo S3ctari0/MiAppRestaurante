@@ -118,11 +118,11 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/buttonCalificar"
+                android:id="@+id/buttonAddComments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="@string/guardar_valoraci_n"
+                android:text="@string/a_adir_comentario"
                 android:textColor="@android:color/white"
                 android:backgroundTint="#3D4D50"/>
 
@@ -138,12 +138,12 @@
                 android:padding="10dp"
                 android:textStyle="italic|bold"/>
 
-            <TextView
+            <EditText
+                android:id="@+id/textAddComment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/rounded_corner"
-                android:text=""
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:padding="10dp"/>
