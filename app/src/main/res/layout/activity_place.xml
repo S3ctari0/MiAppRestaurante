@@ -31,6 +31,18 @@
             android:textColor="@android:color/white"
             android:textSize="25sp"
             android:textStyle="bold|italic"/>
+
+        <Button
+            android:id="@+id/buttonEditPlace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:backgroundTint="#3C4B4E"
+            android:scaleX="0.88"
+            android:scaleY="0.88"
+            android:text="@string/configurar"
+            android:textColor="@color/white"/>
+
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView

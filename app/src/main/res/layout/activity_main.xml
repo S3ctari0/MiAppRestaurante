@@ -23,7 +23,7 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Food4U"
+            android:text="@string/food4u"
             android:textColor="#FDFDFD"
             android:textSize="24sp"
             android:layout_marginTop="0dp"
@@ -33,7 +33,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Usuario"
+            android:text="@string/usuario"
             android:textColor="#FDFDFD"
             android:layout_marginTop="20dp" />
 
@@ -52,7 +52,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Contraseña"
+            android:text="@string/contrase_a"
             android:textColor="#FFFFFF"
             android:layout_marginTop="25dp"/>
 
@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:backgroundTint="#4F6367"
-            android:text="Ingresar"
+            android:text="@string/ingresar"
             android:textColor="@color/white"
             android:gravity="center"/>
 
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:backgroundTint="#4F6367"
-            android:text="Registrarse"
+            android:text="@string/registrarse"
             android:textColor="@color/white"
             android:gravity="center"/>
 </LinearLayout>

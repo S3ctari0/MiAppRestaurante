@@ -10,16 +10,18 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class ActivityLogIn : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        FirebaseApp.initializeApp(this)
         setContentView(R.layout.activity_main)
 
         auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
 
         val buttonIngreso = findViewById<Button>(R.id.Button_Ingreso)
         val userInput = findViewById<EditText>(R.id.UsuarioText)
@@ -31,19 +33,35 @@ class ActivityLogIn : AppCompatActivity() {
         }
 
         buttonIngreso.setOnClickListener {
-            val userEmail = userInput.text.toString().trim() // Este es el email
+            val userEmail = userInput.text.toString().trim()
             val pass = passwordInput.text.toString().trim()
 
             if (userEmail.isNotEmpty() && pass.isNotEmpty()) {
                 auth.signInWithEmailAndPassword(userEmail, pass)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            val intent = Intent(this, ActivityMainPage::class.java).apply {
-                                putExtra("USER_NAME", userEmail)
-                            }
-                            Toast.makeText(this, "Inicio de sesión exitoso!", Toast.LENGTH_SHORT).show()
-                            startActivity(intent)
-                            finish()
+                            val usuarioId = auth.currentUser?.uid ?: return@addOnCompleteListener
+
+                            // Cargar los datos del usuario desde Firestore
+                            db.collection("usuarios").document(usuarioId).get()
+                                .addOnSuccessListener { document ->
+                                    if (document.exists()) {
+                                        val favoritos = document.get("favoritos") as? List<String> ?: emptyList()
+                                        val intent = Intent(this, ActivityMainPage::class.java).apply {
+                                            putExtra("USER_NAME", userEmail)
+                                            putExtra("FAVORITOS", favoritos.toTypedArray())
+                                        }
+                                        Toast.makeText(this, "Inicio de sesión exitoso!", Toast.LENGTH_SHORT).show()
+                                        startActivity(intent)
+                                        finish()
+                                    } else {
+                                        Toast.makeText(this, "No se encontraron datos del usuario.", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                                .addOnFailureListener { e ->
+                                    Log.e("FirestoreError", "Error al cargar usuario: ${e.message}")
+                                    showAlert()
+                                }
                         } else {
                             Toast.makeText(this, "Error al iniciar sesión.", Toast.LENGTH_SHORT).show()
                             showAlert()

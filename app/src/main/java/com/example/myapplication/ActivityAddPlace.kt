@@ -11,16 +11,18 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
-class ActivityEditPlace : AppCompatActivity() {
+class ActivityAddPlace : AppCompatActivity() {
     private lateinit var db: FirebaseFirestore
     private lateinit var storageRef: StorageReference
     private var imageUri: Uri? = null
     private lateinit var getContent: ActivityResultLauncher<String>
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +31,7 @@ class ActivityEditPlace : AppCompatActivity() {
 
         db = FirebaseFirestore.getInstance()
         storageRef = FirebaseStorage.getInstance().reference
+        auth = FirebaseAuth.getInstance()
 
         getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
             imageUri = uri
@@ -55,7 +58,6 @@ class ActivityEditPlace : AppCompatActivity() {
                 Toast.makeText(this, "Por favor, completa todos los campos y selecciona una imagen.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
             subirImagen(imageUri!!)
         }
     }
@@ -66,7 +68,6 @@ class ActivityEditPlace : AppCompatActivity() {
 
         Log.d("ActivityEditPlace", "Subiendo imagen a: $imageRef")
 
-        // Verifica el tipo de la imagen
         val mimeType = contentResolver.getType(uri)
         if (mimeType != "image/jpeg" && mimeType != "image/png") {
             Toast.makeText(this, "Por favor, selecciona una imagen en formato JPG o PNG.", Toast.LENGTH_SHORT).show()
@@ -90,20 +91,26 @@ class ActivityEditPlace : AppCompatActivity() {
     private fun guardarRestauranteEnFirestore(restaurante: Restaurante) {
         val docRef = db.collection("restaurantes").document() // Crea un nuevo documento
 
-        docRef.set(restaurante.copy(id = docRef.id))
-            .addOnSuccessListener {
-                Toast.makeText(this, "Restaurante agregado con éxito", Toast.LENGTH_SHORT).show()
-                finish()
-            }
-            .addOnFailureListener { e ->
-                Toast.makeText(this, "Error al agregar el restaurante: ${e.message}", Toast.LENGTH_SHORT).show()
-            }
+        val usuarioUID = auth.currentUser?.uid
+
+        if (usuarioUID != null) {
+            docRef.set(restaurante.copy(id = docRef.id, creadorUID = usuarioUID))
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Restaurante agregado con éxito", Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(this, "Error al agregar el restaurante: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+        } else {
+            Toast.makeText(this, "Error: usuario no autenticado", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun obtenerDatosRestaurante(): Restaurante {
         val nombre = findViewById<EditText>(R.id.editTextName).text.toString()
         val descripcion = findViewById<EditText>(R.id.editTextDescription).text.toString()
-        return Restaurante(id = "", nombre, descripcion, "", emptyList())
+        return Restaurante(id = "", nombre = nombre, descripcion = descripcion, imagenUrl = "", creadorUID = "")
     }
 }
 
@@ -112,7 +119,8 @@ data class Restaurante(
     val nombre: String,
     val descripcion: String,
     val imagenUrl: String,
-    val calificaciones: List<Float> = emptyList() // Cambiado a List<Float>
+    val creadorUID: String = "",
+    val calificaciones: List<Float> = emptyList()
 ) {
     val calificacionPromedio: Float
         get() = if (calificaciones.isNotEmpty()) {
@@ -121,3 +129,4 @@ data class Restaurante(
             0f
         }
 }
+

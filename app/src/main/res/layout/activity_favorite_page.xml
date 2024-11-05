@@ -34,16 +34,6 @@
             android:textSize="25sp"
             android:layout_marginStart="0dp"
             android:textStyle="bold|italic"/>
-        <Button
-            android:id="@+id/buttonAddPlace"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:backgroundTint="#3C4B4E"
-            android:scaleX="0.88"
-            android:scaleY="0.88"
-            android:text="@string/a_adir_lugar"
-            android:textColor="@color/white"/>
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
@@ -94,14 +84,6 @@
                         android:layout_marginStart="20dp"
                         android:textColor="@color/white"
                         android:backgroundTint="#3C4B4E"/>
-                    <Button
-                        android:id="@+id/buttonFavoritePlace"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/favoritos"
-                        android:textColor="@color/white"
-                        android:backgroundTint="#3C4B4E"
-                        android:layout_marginStart="110dp"/>
                 </LinearLayout>
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
@@ -114,5 +96,3 @@
         </LinearLayout>
     </ScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
