@@ -41,7 +41,7 @@ class ActivityRegister : AppCompatActivity() {
                             val usuarioData = hashMapOf(
                                 "nombre" to fullName,
                                 "correo" to email,
-                                "favoritos" to mutableListOf<String>() // Inicializa como una lista vacía
+                                "favoritos" to mutableListOf<String>()
                             )
 
                             db.collection("usuarios").document(usuarioId)

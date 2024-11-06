@@ -150,6 +150,12 @@
                 android:padding="10dp"
                 android:textStyle="italic|bold"/>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewComentarios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" />
+
             <EditText
                 android:id="@+id/textAddComment"
                 android:layout_width="match_parent"
@@ -159,6 +165,7 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:padding="10dp"/>
+
         </LinearLayout>
     </ScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

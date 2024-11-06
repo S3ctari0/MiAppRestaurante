@@ -19,14 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
+
         <activity
-            android:name=".ActivityFavoritePage"
-            android:exported="false" />
-        <activity
-            android:name=".EditPlacesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ActivityEditPlace"
+            android:name=".ActivityAddPlace"
             android:exported="false" />
         <activity
             android:name=".ActivityPlace"
